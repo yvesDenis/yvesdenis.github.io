@@ -3,6 +3,7 @@ baseURL = "https://yvesdenis.github.io"
 languageCode = "en-us"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 resourceDir = "../resources"
+publishDir = "docs"
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
