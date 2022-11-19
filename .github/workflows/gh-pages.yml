@@ -29,21 +29,21 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
         env:
           HUGO_ENV: ${{ secrets.HUGO_ENV }}
   
-  e2e_test:
+  e2etest:
     name: End-to-end tests # this job will be trigerred only in case of successful website deployment
     runs-on: ubuntu-22.04
-    if: github.ref == 'refs/heads/main'
-    needs: [deploy]
+    if: github.ref == 'refs/heads/master'
+    needs: deploy
     steps:
       - name: Checkout
-        uses: actions/checkout@@v3
+        uses: actions/checkout@v3
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
@@ -54,4 +54,3 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
