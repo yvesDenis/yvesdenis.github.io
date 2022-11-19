@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Hello, I am Yves-Denis. Senior Software Engineer, Solution designer, Tech and Anime Enthusiast and just another dummy tech who still cries seeing the death of Jiraiya Sensei :("
+description: "Hello, I am Yves-Denis. Senior Software Engineer, Solution designer, Tech and Anime Enthusiast and just another dummy tech who still cries watching the death of Jiraiya Sensei :("
 featured_image: '/images/jiraiya-sensei.jpeg'
 menu:
   main:
@@ -8,6 +8,8 @@ menu:
 ---
 >"We used to say, There's nothing cool about being a dummy.
 Read more at https://www.brainyquote.com/topics/dummy-quotes"
+
+
 
 ## Skills
 
@@ -17,6 +19,8 @@ Read more at https://www.brainyquote.com/topics/dummy-quotes"
 * Software Developer { Java | Go | Bash | Shell | JavaScript } 
 * Big Data
 * Data Structures - Algorithms { Problem-solving }
+
+
 
 ## Accounts
 
