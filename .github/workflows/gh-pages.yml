@@ -8,6 +8,7 @@ on:
 
 jobs:
   deploy:
+    name: Build and deploy 
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -23,10 +24,34 @@ jobs:
 
       - name: Build
         run: hugo --minify
+        env:
+          HUGO_ENV: ${{ secrets.HUGO_ENV }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./docs
+        env:
+          HUGO_ENV: ${{ secrets.HUGO_ENV }}
+  
+  e2e_test:
+    name: End-to-end tests # this job will be trigerred only in case of successful website deployment
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/main'
+    needs: [deploy]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
