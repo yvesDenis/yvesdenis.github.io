@@ -1,0 +1,25 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "E2E tests with Cypress",
+  "main": "",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yvesDenis/personal-website.git"
+  },
+  "author": "Yves Denis Deffo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yvesDenis/personal-website/issues"
+  },
+  "homepage": "https://github.com/yvesDenis/personal-website#readme",
+  "dependencies": {
+    "cypress": "^11.1.0"
+  }
+}
