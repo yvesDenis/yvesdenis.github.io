@@ -4,7 +4,7 @@ module.exports = {
 
   e2e: {
     baseUrl: 'https://yvesdenis.github.io/',
-    video: 'false',
+    video: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
