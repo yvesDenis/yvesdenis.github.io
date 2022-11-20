@@ -12,7 +12,7 @@ on:
 jobs:
   deploy:
     name: Build and deploy 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: github-pages
     steps:
       - uses: actions/checkout@v3
