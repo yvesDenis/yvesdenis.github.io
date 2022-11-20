@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/Users/pc/Documents/personal-website",
+	"sourceRoot": "/home/runner/work/yvesdenis.github.io/yvesdenis.github.io",
 	"sources": [
 		"ananke/css/main.css"
 	],
