@@ -5,7 +5,6 @@ on:
     branches:
       - master  # Set a branch to deploy
   pull_request:
-    types: [opened, reopened]
     branches:
       - master
 
@@ -38,3 +37,26 @@ jobs:
           publish_dir: ./docs
         env:
           HUGO_ENV: ${{ secrets.HUGO_ENV }}
+
+      - name: Sleep for 1 min # Wait for the deployment to be completed before running Cypress tests
+        if: github.ref == 'refs/heads/master'
+        run: sleep 60
+  
+  e2etest:
+    name: End-to-end tests # this job will be trigerred only in case of successful website deployment
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -7,9 +7,4 @@ describe('Test if the website behaves as expected', () => {
     cy.get('[name="robots"]')
       .should('have.attr','content','index, follow')
   })
-
-  it('Check css file is correctly loaded', () => {
-    cy.get('[rel="stylesheet"]')
-      .should('have.attr','href','/ananke/css/main.min.css')
-  })
 })
