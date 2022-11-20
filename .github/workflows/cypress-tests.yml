@@ -7,7 +7,6 @@ jobs:
     name: End-to-end tests # this job will be trigerred only in case of successful website deployment
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
-    needs: deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
