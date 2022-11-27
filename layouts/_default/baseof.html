@@ -14,7 +14,7 @@
     {{ if and $production $public }}
       <meta name="robots" content="index, follow">
     {{ else }}
-      <meta name="robots" content="noindex1, nofollow">
+      <meta name="robots" content="noindex, nofollow">
     {{ end }}
 
     {{ partial "site-style.html" . }}
@@ -50,5 +50,9 @@
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
     <script id="dsq-count-scr" src="//https-yvesdenis-github-io.disqus.com/count.js" async></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+    {{ $addThisApiKey := getenv "HUGO_ADD_THIS_API_KEY" }}
+    {{ $srcUrl := printf "//s7.addthis.com/js/300/addthis_widget.js#pubid=%s" $addThisApiKey }}
+    <script type="text/javascript" src="{{ $srcUrl }}"></script>
   </body>
 </html>
