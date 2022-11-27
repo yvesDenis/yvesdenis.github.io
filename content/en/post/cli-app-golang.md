@@ -128,7 +128,7 @@ fo the message encryption.
 
 Like said before, the cryptography opration is implemented in another file For readability purposes, to import 
 the encryption.go file and synchronize modules's dependencies, you should edit the go.mod file 
-with thes instructions:
+with these instructions:
 
 ```
 go mod edit -replace crypto-example/encryption => ../crypto-example
@@ -190,7 +190,7 @@ func Decrypt(textToDecrypt string, secretKey string) (string, error) {
 - Lines 5 and 11: Flags decrptions , visible in the help text.
 - Lines 6 and 12: Initialize key and text variables with input arguments.
 
-#### Run the app
+#### Run the application
 
 Afetr adding this last instruction:
 
@@ -227,7 +227,7 @@ GLOBAL OPTIONS:
 
 ```
 
-Let's try to validate our functional requirements. Encrypt a text with a key(its length must be multiple of 16):
+Let's try to validate our functional requirements. Encrypt a text with a key(its length must be a multiple of 16):
 
 ```
 -> app -k "passphrase123456" -t "Encrypting example" encrypt
