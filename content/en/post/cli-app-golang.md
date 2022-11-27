@@ -11,7 +11,7 @@ featured_image: "/images/golang_logo.png"
 Command Line Applications(CLI) are computer programs designed to be used
 from a text-based interface such as Shell or Bash. They are useful as 
 they allow users to type in commands that can produce immediate results or 
-give them the possibility to automate tasks. An example of a CLI tool:
+give them the possibility to automate tasks. Some CLI tools:
 **Git, Brew, Curl, etc...**  
 
 I'm a CLI lover as are almost all developers :)
@@ -37,7 +37,7 @@ Functional requirements:
 First, let's take a break from the principle of [Cryptography](https://en.wikipedia.org/wiki/Cryptography).
 This could be a topic of a whole article but I'll be synthetic saying that it's a mechanism 
 by which data is converted into a kind of secret code hiding its real meaning.
-That data transformation can be done with a [single key](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) (Symmetric key encryption scheme) or with a [public and private keys](https://en.wikipedia.org/wiki/Public-key_cryptography) (Asymmetric key encryption scheme).
+That data transformation can be done either with a [single key](https://en.wikipedia.org/wiki/Symmetric-key_algorithm) (Symmetric key encryption scheme) or with a [public and private keys](https://en.wikipedia.org/wiki/Public-key_cryptography) (Asymmetric key encryption scheme).
 
 For this tutorial, i choosed the first option with an [AES-256 Cypher algorithm](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 
@@ -45,7 +45,7 @@ For this tutorial, i choosed the first option with an [AES-256 Cypher algorithm]
 
 There are many Golang libraries or frameworks which we can leverage to build our CLI app but 
 [Urfave/cli](https://cli.urfave.org) is my favorite as I find it simple, fast and not restrictive like the others.
-I has 2 versions and we'll go with the second and latest one [v2](https://cli.urfave.org/v2/getting-started/).
+It has two versions and we'll go with the second and latest one [v2](https://cli.urfave.org/v2/getting-started/).
 
 For Go beginners, here's the official doc https://go.dev/doc/
 
@@ -106,8 +106,8 @@ Ok , that's good but nothing fancy! We want something sophisticated right?, that
 we made this [encrytion.go](https://github.com/yvesDenis/website-projects-articles/blob/master/crypto/crypto-example/encryption.go) file, inside there's all the encryption/decryption logic but don't be in a hurry, we'll get there later
 :wink:
 
-CLI apps do have commands which actually invoke actions and flags or options which customize command's execution.
-This article explains well this concepts above: https://blog.heroku.com/cli-flags-get-started-with-oclif 
+CLI apps do have commands which actually invoke actions and flags (or options) which customize command's execution.
+this article explains quite clearly how the above concepts work: https://blog.heroku.com/cli-flags-get-started-with-oclif 
 
 So as a summary:
 
@@ -124,11 +124,11 @@ For our use-case , commands are effective encryption and decryption actions:
 - Lines 4 and 17: Name of aliases , like shortcuts: -e for encrypt, -d for decrypt.
 - Lines 9 and 22: Error message returned is anything goes wrong.
 - Lines 11 and 24: Message output, values returned by the app ,plainText in case of decryption and cypherText
-fo the message encryption.
+related to the message encryption process.
 
 Like said before, the cryptography opration is implemented in another file For readability purposes, to import 
 the encryption.go file and synchronize modules's dependencies, you should edit the go.mod file 
-with these instructions:
+with the following instructions:
 
 ```
 go mod edit -replace crypto-example/encryption => ../crypto-example
@@ -187,7 +187,7 @@ func Decrypt(textToDecrypt string, secretKey string) (string, error) {
 
 - Lines 3 and 9: Flags names. -key for the symmetric key and -text for the text
 - Lines 4 and 10: Aliases. -k and -t.
-- Lines 5 and 11: Flags decrptions , visible in the help text.
+- Lines 5 and 11: Flags descriptions , visible in the help text.
 - Lines 6 and 12: Initialize key and text variables with input arguments.
 
 #### Run the application
