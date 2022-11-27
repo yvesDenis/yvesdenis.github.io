@@ -5,6 +5,7 @@ featured_image: '/images/jiraiya-sensei.jpeg'
 menu:
   main:
     weight: 1
+toc: false
 ---
 >"We used to say, There's nothing cool about being a dummy.
 Read more at https://www.brainyquote.com/topics/dummy-quotes"
