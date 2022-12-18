@@ -17,7 +17,7 @@ The source code of this first part : https://github.com/yvesDenis/website-projec
 
 ## Architecture diagram
 
-![build and deploy IAC for ecs,codebuild and ecr](/images/codebuild-ecr-ecs-project.svg)
+![build and deploy IAC for ecs,codebuild and ecr](/images/ecs-ecr/codebuild-ecr-ecs-project.svg)
 
 We opted for a scenario as close as possible to a real production situation. To do this, our technology platform includes a continuous integration and deployment chain using Github actions, which also serves as our VCS.
 The deployment of the cloud infrastructure will be done using Terragrunt.
