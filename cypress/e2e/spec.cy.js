@@ -35,7 +35,7 @@ describe('Test if the website behaves as expected', () => {
 
     cy.get('h1').contains('Articles')
 
-    cy.get('aside').children().should('have.length', 4) 
+    cy.get('aside').children().should('have.length', 3) 
 
   })
 })
