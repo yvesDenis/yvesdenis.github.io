@@ -1,7 +1,7 @@
 ---
 date: 2023-01-02T08:13:08-04:00
 tags: ["Aws" , "IAC", "Pulumi", "Cloud"]
-title: "Build serverless system with Pulumi and AWS(Part 1)"
+title: "Build serverless system with Pulumi and AWS (Part 1)"
 toc: true
 featured_image: "/images/pulumi-aws.jpeg"
 ---
@@ -15,9 +15,15 @@ In this post, we are working to resume the basic concept but bringing a DevOps c
 
 ![I regret this decision!](/images/decision-regret.gif) 
 
+### Functional requirements
+
+1. The application should expose an endpoint to retrieve all orders items present in the database.
+2. The application should expose an endpoint to update a particular order item present in the database.
+3. The application should expose an endpoint to delete a particular order item present in the database.
+
 ## Architecture diagram
 
-![Serveless system architecture](/images/serverless-system/serverless-system-arch.svg) 
+![Serveless system sync architecture](/images/serverless-system/serverless-system-arch.svg) 
 
 Our application named **ORDER-API** is responsible for:
 
