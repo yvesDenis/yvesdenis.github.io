@@ -5,6 +5,7 @@ theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 resourceDir = "../resources"
 publishDir = "docs"
 enableEmoji = true
+enableGitInfo = true
 
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
@@ -39,3 +40,9 @@ DisqusShortname = "https-yvesdenis-github-io"
 [[params.ananke_socials]]
 name = "github"
 url = "https://github.com/yvesDenis"
+
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = [':git', 'lastmod', 'date', 'publishDate']
+publishDate = ["publishDate", "date"]
+expiryDate = ["expiryDate"]

@@ -23,10 +23,13 @@ Read more at https://www.brainyquote.com/topics/dummy-quotes"
 
 
 
-## Accounts
+## Social accounts
 
-* Github - profile :
-    https://github.com/yvesDenis
+* [Github - profile]( https://github.com/yvesDenis)
 
-* Linkedin - profile :
-    https://linkedin.com/in/deffo-yves-denis-bbb275100
+* [Linkedin - profile](https://linkedin.com/in/deffo-yves-denis-bbb275100)
+
+
+## Certifications
+
+* AWS Certified Solutions Architect Associate
