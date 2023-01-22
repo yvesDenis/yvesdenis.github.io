@@ -302,11 +302,11 @@ Nothing fancy inside, it just checks the request header and returns the policy d
             #UserPoolArn: !GetAtt OrderCognitoPool.Arn
 ```
 
-We add the new lambda function so it'll be deployed by cloudformation and The auth property of the apigateway has been updated , we commented the cognito pool reference and we added the lambda autorizer arn.
+We added the new lambda function so it'll be deployed by cloudformation and The auth property of the apigateway has been updated , we commented the cognito pool reference and we added the lambda autorizer arn.
 
 After the deploy, our apigateway looks like this:
 
-![Lambda authorizer screenshot](/images/serverless-system/lambda-authorizer-screenshot.svg)
+![Lambda authorizer screenshot](/images/serverless-system/lambda-authorizer-screenshot.png)
 
 ### Lambda authorizer integration test
 
