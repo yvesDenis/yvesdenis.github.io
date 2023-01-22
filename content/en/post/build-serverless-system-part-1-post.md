@@ -28,9 +28,8 @@ In this post, we are working to resume the basic concept but bringing a DevOps c
 Our application named **ORDER-API** is responsible for:
 
 1. Creating synchronous REST API with all CRUD operations by using **API Gateway**, **Lambda** and **DynamoDB**. **(Part 1)**
-2. Exposing POST method to asynchronous method with **SQS** and Lambda Poller and adding **Step functions** to orchestrate POST operations with additional Lambda functions. **(Part 2)**
-3. Adding authentication mechanism to your API Gateway(with **AWS Incognito**), then it will only allow authenticated users to access API by using OAuth2 scopes. **(Part 3)**
-4. Providing an UI interface to end users with **React**. **(Part 4)**
+2. Exposing POST method to asynchronous method with **SQS** and Lambda Poller and adding **Step functions** to orchestrate POST operations with additional Lambda functions. [**(Part 2)**]({{< ref "build-serverless-system-part-2-post" >}})
+3. Adding authentication mechanism to your API Gateway(with **AWS Incognito**), then it will only allow authenticated users to access API by using OAuth2 scopes. [**(Part 3)**]({{< ref "build-serverless-system-part-3-post" >}})
 
 ## CI/CD Pipeline
 

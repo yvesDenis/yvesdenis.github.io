@@ -210,4 +210,4 @@ Et Voila! 😃
 
 ## Conclusion
 
-For the second part , we implemented the async process of order management with sqs, sns and stepfunctions. Those are resources heavily used in real world scenarios so it's important to know are they work independently and together. For the next step , we'll need to secure our apigateway endpoints with an AWS authentication resource called **Amazon Cognito** so stay connected... 😉
+For the second part , we implemented the async process of order management with sqs, sns and stepfunctions. Those are resources heavily used in real world scenarios so it's important to know are they work independently and together. For the next step , we'll need to secure our apigateway endpoints with an AWS authentication resource called **Amazon Cognito** so stay tuned... 😉
