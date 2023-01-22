@@ -30,7 +30,7 @@ There are many ways to control access to our apis(https://docs.aws.amazon.com/se
 
 ## Architecture diagram - Cognito user pool
 
-![Serveless system authentication flow](/images/serverless-system/authentication-flow-cognito.svg) 
+![Serverless system cognito authentication flow](/images/serverless-system/authentication-flow-cognito.svg) 
 
 For this part , we deployed a new aws resource through Cloudformation : **AWS Cognito user pool**
 
@@ -227,3 +227,138 @@ Response:
     ]
 ```
 
+## Architecture diagram - Lambda Authorizer 
+
+![Serverless system lambda authorizer authentication flow](/images/serverless-system/authentication-flow-lambda-authorizer.svg)
+
+[A Lambda authorizer (formerly known as a custom authorizer)](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html) is a Lambda function that you provide to control access to your API. When your API is called, this Lambda function is invoked with a request context or an authorization token that the client application provides. The Lambda function responds whether the caller is authorized to perform the requested operation. 
+
+There are two types of Lambda authorizers:
+
+* A token-based Lambda authorizer (also called a TOKEN authorizer) receives the caller's identity in a bearer token, such as a JSON Web Token (JWT) or an OAuth token. F
+* A request parameter-based Lambda authorizer (also called a REQUEST authorizer) receives the caller's identity in a combination of headers, query string parameters, stageVariables, and $context variables. 
+
+For this project we used the second one. The Lambda authorizer will be responsible for validating the request by checking the value of the **AUTH** header field of the request.
+
+### Create the lambda authorizer code 
+
+[Here](https://github.com/yvesDenis/website-projects-articles/blob/serverless-system/serverless-system/lambda/auth/main.go) is the source code of this new lambda function.
+
+Nothing fancy inside, it just checks the request header and returns the policy document of the requester.
+
+### Update the Sam template
+
+```
+##########################################################################
+#           LAMBDA AUTHORIZER                                            # 
+##########################################################################
+
+  MyAuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./lambda/auth/
+      Handler: auth.handler
+      Runtime: go1.x
+      Architectures:
+          - x86_64
+      Policies:
+        Statement:
+          - Effect: Allow
+            Action:
+              - logs:*
+            Resource:
+              - "*" 
+
+##########################################################################
+#           API GATEWAY                                                  # 
+##########################################################################
+
+  OrderApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref ApiGatewayStageName
+      Cors:
+        AllowMethods: "'POST, GET, UPDATE, DELETE'"
+        AllowHeaders: "'X-Forwarded-For'"
+        AllowOrigin: "'*'"
+        MaxAge: "'600'"
+      DefinitionBody:
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: './api_template.yaml'
+      Auth:
+        DefaultAuthorizer: MyLambdaRequestAuthorizer
+        Authorizers:
+          MyLambdaRequestAuthorizer:
+            FunctionPayloadType: REQUEST
+            FunctionArn: !GetAtt MyAuthFunction.Arn
+            Identity:
+              Headers:
+                - AUTH
+        #DefaultAuthorizer: MyCognitoAuth
+        #Authorizers:
+          #MyCognitoAuth:
+            #UserPoolArn: !GetAtt OrderCognitoPool.Arn
+```
+
+We add the new lambda function so it'll be deployed by cloudformation and The auth property of the apigateway has been updated , we commented the cognito pool reference and we added the lambda autorizer arn.
+
+After the deploy, our apigateway looks like this:
+
+![Lambda authorizer screenshot](/images/serverless-system/lambda-authorizer-screenshot.svg)
+
+### Lambda authorizer integration test
+
+Let's validate if our authentication flow with the new lambda works as expected:
+
+1. With an empty AUTH header field
+
+```
+Request:
+  curl --location --request GET 'https://xxxxx.execute-api.ca-central-1.amazonaws.com/Dev/orders/' 
+
+Response:
+  {"message":"Unauthorized"}
+
+```
+
+2. With an invalid AUTH header field
+
+```
+Request:
+  curl --location --request GET 'https://xxxxx.execute-api.ca-central-1.amazonaws.com/Dev/orders/' \
+--header 'AUTH: auth_secrets'
+
+Response:
+  {"Message": "User is not authorized to access this resource with an explicit deny"}
+
+```
+
+2. With a valid AUTH header field
+
+```
+Request:
+  curl --location --request GET 'https://xxxxx.execute-api.ca-central-1.amazonaws.com/Dev/orders/' \
+--header 'AUTH: auth_secret'
+
+Response:  
+    [
+        {
+            "quantity": 2,
+            "createdAt": "2021-10-04T08:59:07+0000",
+            "user_id": "static_user",
+            "orderStatus": "SUCCESS",
+            "id": "047e55cddweee9-6415-4t53-bq13",
+            "name": "Burger_1",
+            "restaurantId": "Restaurant Id"
+        }
+    ]
+
+```
+
+## Conclusion
+
+We have reached the end of our project which has allowed us to touch a good number of aws resources and see how they can be put together to meet production scenarios but also to make the solution even more resilient and secure.
+
+Let me know in the comments what you think about this project 😉!
