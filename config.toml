@@ -1,6 +1,6 @@
 title = "Time-To-Geek"
 baseURL = "https://yvesdenis.github.io"
-languageCode = "en-us"
+locale = "en-us"
 theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
 resourceDir = "../resources"
 publishDir = "docs"
@@ -12,7 +12,8 @@ SectionPagesMenu = "main"
 Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 googleAnalytics = ""
 enableRobotsTXT = true
-DisqusShortname = "https-yvesdenis-github-io"
+[services.disqus]
+  shortname = "https-yvesdenis-github-io"
 
 [languages]
   [languages.en]
@@ -46,3 +47,6 @@ date = ["date", "publishDate", "lastmod"]
 lastmod = [':git', 'lastmod', 'date', 'publishDate']
 publishDate = ["publishDate", "date"]
 expiryDate = ["expiryDate"]
+
+[markup.goldmark.renderer]
+unsafe = true

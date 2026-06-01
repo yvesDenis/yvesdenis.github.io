@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Python on Time-to-Geek</title>
+		<link>https://yvesdenis.github.io/tags/python/</link>
+		<description>Recent content in Python on Time-to-Geek</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 10:00:00 -0500</lastBuildDate>
+		
+			<atom:link href="https://yvesdenis.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>From Notebook to AI-Augmented MLOps: Predicting Retail Customer Churn in 3 Phases 🚀</title>
+				<link>https://yvesdenis.github.io/post/retail-churn-prediction-post/</link>
+				<pubDate>Sun, 31 May 2026 10:00:00 -0500</pubDate>
+				<guid>https://yvesdenis.github.io/post/retail-churn-prediction-post/</guid>
+				<description>&lt;h2 id=&#34;introduction-&#34;&gt;Introduction 🧠&lt;/h2&gt;&#xA;&lt;p&gt;You&amp;rsquo;ve trained a model. It works great on your laptop. You ship it. Six months later, nobody&amp;rsquo;s maintained it, the predictions are garbage, and your data scientist has moved on. Sound familiar?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://yvesdenis.github.io/images/memes/this-is-fine.jpg&#34; alt=&#34;This is fine — ML model on fire with no monitoring&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Every ML team at some point. Don&amp;rsquo;t be this dog. 🐶🔥&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;That&amp;rsquo;s exactly the problem this project tackles — head on, in three progressive phases. We&amp;rsquo;re building a &lt;strong&gt;customer churn prediction system for retail&lt;/strong&gt;, starting from a messy Jupyter notebook and ending with an &lt;strong&gt;autonomous AI agent&lt;/strong&gt; that monitors drift and retrains the model without you lifting a finger.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

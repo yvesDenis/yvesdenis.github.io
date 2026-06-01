@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Cloud on Time-to-Geek</title>
+		<link>https://yvesdenis.github.io/tags/cloud/</link>
+		<description>Recent content in Cloud on Time-to-Geek</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 21 Jan 2023 22:38:18 -0500</lastBuildDate>
+		
+			<atom:link href="https://yvesdenis.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Build serverless system with Pulumi and AWS (Part 3)</title>
+				<link>https://yvesdenis.github.io/post/build-serverless-system-part-3-post/</link>
+				<pubDate>Sat, 21 Jan 2023 14:17:20 -0500</pubDate>
+				<guid>https://yvesdenis.github.io/post/build-serverless-system-part-3-post/</guid>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Here we are at the end of our long journey in the cloud which led us to implement our serveless system in synchronous and asynchronous mode.&lt;/p&gt;&#xA;&lt;p&gt;Our application meets the basic functional requirements to be used in production, however we cannot release a digital system without worrying about security. Security allows us to retain our customers, to assure them of the protection and anonymity of their data which passes through our application. It also protects us against malicious attacks.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Build serverless system with Pulumi and AWS (Part 2)</title>
+				<link>https://yvesdenis.github.io/post/build-serverless-system-part-2-post/</link>
+				<pubDate>Sun, 15 Jan 2023 12:16:46 -0500</pubDate>
+				<guid>https://yvesdenis.github.io/post/build-serverless-system-part-2-post/</guid>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In our &lt;a href=&#34;https://yvesdenis.github.io/post/build-serverless-system-part-1-post/&#34;&gt;previous article&lt;/a&gt;, we focused on the lambda-Sync part of our serverless system which corresponds to the synchronous part of our application.&lt;/p&gt;&#xA;&lt;p&gt;We had already set up our entire continuous integration pipeline consisting of &lt;strong&gt;Github&lt;/strong&gt; for the VCS, &lt;strong&gt;Codebuild&lt;/strong&gt; to build our docker images and finally &lt;strong&gt;Cloudformation&lt;/strong&gt; to deploy our resources in the AWS environment.&lt;/p&gt;&#xA;&lt;p&gt;For this second part, there is no need to reinvent the wheel. We will use the instruments already in place and implement our asynchronous circuit.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Build serverless system with Pulumi and AWS (Part 1)</title>
+				<link>https://yvesdenis.github.io/post/build-serverless-system-part-1-post/</link>
+				<pubDate>Mon, 02 Jan 2023 08:13:08 -0400</pubDate>
+				<guid>https://yvesdenis.github.io/post/build-serverless-system-part-1-post/</guid>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In my journey in the cloud and in the preparation of cloud certifications, I have been inspired by the AWS workshops carried out and generously made available to everyone by the AWS team.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://catalog.us-east-1.prod.workshops.aws/workshops/b34eab03-4ebe-46c1-bc63-cd2d975d8ad4/en-US&#34;&gt;This workshop&lt;/a&gt; which deals with the implementation of a serverless system is a must for all aspiring cloud engineers. It covers both the event-driven approach and the synchronous web-server mechanism.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we are working to resume the basic concept but bringing a DevOps concept with a pipeline to automate our deployments and also adding a front-end part also deployed in an automated way in the cloud. Let&amp;rsquo;s have some fun! 😉&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Build, deploy and run an application with ECR, ECS and Codebuild (Part 2)</title>
+				<link>https://yvesdenis.github.io/post/ecs-ecr-codebuild-part-2-post/</link>
+				<pubDate>Sun, 18 Dec 2022 11:20:08 -0400</pubDate>
+				<guid>https://yvesdenis.github.io/post/ecs-ecr-codebuild-part-2-post/</guid>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This is the second part of our project including ECS, ECR, Codebuild, github actions. You can find the first part &lt;a href=&#34;https://yvesdenis.github.io/post/ecs-ecr-codebuild-part-1-post/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This part will focus more on the deployment of our application (its container image), the unit tests executed by Codebuild at each push in github and finally we can test through our web browser if our application responds as expected.&lt;/p&gt;&#xA;&lt;p&gt;The source code of the whole project : &lt;a href=&#34;https://github.com/yvesDenis/website-projects-articles/tree/master/deploy-app-aws-ecs&#34;&gt;https://github.com/yvesDenis/website-projects-articles/tree/master/deploy-app-aws-ecs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture-diagram&#34;&gt;Architecture diagram&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://yvesdenis.github.io/images/ecs-ecr/codebuild-ecr-ecs-project-deploy.svg&#34; alt=&#34;ecs,codebuild and ecr call diagram&#34;&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Build, deploy and run an application with ECR, ECS and Codebuild (Part 1)</title>
+				<link>https://yvesdenis.github.io/post/ecs-ecr-codebuild-part-1-post/</link>
+				<pubDate>Sun, 11 Dec 2022 11:20:08 -0400</pubDate>
+				<guid>https://yvesdenis.github.io/post/ecs-ecr-codebuild-part-1-post/</guid>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In this article, we will follow the complete development cycle of a real-world application from its conception to its production.&#xA;Nowadays, the wind of the moment pushes us all to turn to the cloud because in many aspects it offers more advantages compared to on-premises systems.&lt;/p&gt;&#xA;&lt;p&gt;I decided to divide this tutorial into two parts given its volume, so for this first part, we will focus in more detail on the infrastructure to be deployed and the motivation behind the choice of technologies used.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

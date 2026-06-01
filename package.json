@@ -7,7 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "diagrams:svg": "mmdc -i diagrams/*.mmd -o static/images/diagrams/ --outputFormat svg",
+    "diagrams:png": "mmdc -i diagrams/*.mmd -o static/images/diagrams/ --outputFormat png",
+    "diagrams": "npm run diagrams:svg && npm run diagrams:png"
   },
   "repository": {
     "type": "git",
@@ -21,5 +24,8 @@
   "homepage": "https://github.com/yvesDenis/personal-website#readme",
   "dependencies": {
     "cypress": "^11.1.0"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.15.0"
   }
 }

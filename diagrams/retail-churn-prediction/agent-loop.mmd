@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant OP as 👨‍💻 Operator
+    participant AG as 🤖 Claude Agent
+    participant T1 as get_drift_summary
+    participant T2 as get_model_metrics
+    participant T3 as run_training
+    participant T4 as save_report
+
+    OP->>AG: make agent (drift_share=0.42 🚨)
+    AG->>T1: call get_drift_summary()
+    T1-->>AG: MonthlyCharges p=0.001, Contract p=0.003
+    Note over AG: 42% features drifted — severe 😬
+    AG->>T2: call get_current_model_metrics()
+    T2-->>AG: ROC-AUC=0.8312, n_est=100, depth=8
+    Note over AG: Decide hyperparams:<br/>numerical drift → n_est=200<br/>categorical drift → depth=10
+    AG->>T3: run_training(n_estimators=200, max_depth=10)
+    T3-->>AG: ROC-AUC=0.8441 ✅ (+0.013)
+    AG->>T4: save_remediation_report(analysis, metrics, rec)
+    T4-->>AG: report saved 📄
+    AG-->>OP: Deploy new model — ROC-AUC improved by 1.3%

@@ -1,0 +1,40 @@
+graph LR
+    subgraph Internet
+        USER[👤 Client]
+        GHA[GitHub Actions<br/>OIDC]
+    end
+
+    subgraph VPC["AWS VPC"]
+        subgraph Public["Public Subnets"]
+            ALB[Application<br/>Load Balancer]
+            ECS[ECS Fargate<br/>churn-api]
+        end
+        subgraph Private["Private Subnets"]
+            RDS[(RDS PostgreSQL<br/>predictions)]
+        end
+    end
+
+    subgraph AWSServices["AWS Managed Services"]
+        ECR[ECR<br/>Docker Registry]
+        S3[(S3<br/>DVC + MLflow artifacts)]
+        SSM[SSM Parameter Store<br/>DATABASE_URL secret]
+        CW[CloudWatch<br/>Logs + Metrics]
+        SNS[SNS Topics<br/>drift + alarms]
+        SLACK[Slack 💬]
+    end
+
+    USER -->|HTTPS| ALB
+    ALB --> ECS
+    GHA -->|push image| ECR
+    GHA -->|update service| ECS
+    ECR --> ECS
+    ECS --> RDS
+    ECS -->|fetch secret| SSM
+    ECS -->|logs| CW
+    ECS -->|DVC pull/push| S3
+    CW -->|alarm| SNS
+    SNS --> SLACK
+
+    style VPC fill:#16213e,color:#eee,stroke:#f39c12
+    style AWSServices fill:#0f3460,color:#eee,stroke:#4a9eff
+    style Internet fill:#1a1a2e,color:#eee,stroke:#27ae60

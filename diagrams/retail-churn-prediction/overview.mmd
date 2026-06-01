@@ -1,0 +1,36 @@
+graph TD
+    subgraph Phase1["🖥️ Phase 1 — Local"]
+        CSV[telco_churn.csv] --> PRE[preprocess.py]
+        PRE --> TRAIN[train.py<br/>RandomForest]
+        TRAIN -->|ROC-AUC ≥ 0.78| MODEL[model.pkl]
+        MODEL --> API1[FastAPI :8000]
+        TRAIN --> MLFLOW[MLflow UI<br/>:5001]
+        CSV --> DVC[DVC versioning]
+    end
+
+    subgraph Phase2["☁️ Phase 2 — AWS"]
+        S3[(S3<br/>artifacts)] --> ECS
+        ECR[ECR Registry] --> ECS[ECS Fargate<br/>churn-api]
+        ECS --> RDS[(RDS PostgreSQL<br/>predictions log)]
+        ECS --> CW[CloudWatch<br/>metrics + alarms]
+        CW --> SNS[SNS → Slack<br/>drift alerts]
+        GH[GitHub Actions<br/>CI/CD] -->|OIDC| ECR
+        GH --> ECS
+        DRIFT1[drift_report.py<br/>Evidently] --> SNS
+    end
+
+    subgraph Phase3["🤖 Phase 3 — AI Agent"]
+        DRIFT2[drift_report.json] --> AGENT[Claude Agent<br/>claude-3-5-sonnet]
+        AGENT -->|tool call| T1[get_drift_summary]
+        AGENT -->|tool call| T2[get_model_metrics]
+        AGENT -->|tool call| T3[run_training]
+        AGENT -->|tool call| T4[save_report]
+        T3 -->|new model.pkl| DEPLOY[Deploy decision]
+    end
+
+    Phase1 -->|migrate artifacts| Phase2
+    Phase2 -->|add agent layer| Phase3
+
+    style Phase1 fill:#1a1a2e,color:#eee,stroke:#4a9eff
+    style Phase2 fill:#16213e,color:#eee,stroke:#f39c12
+    style Phase3 fill:#0f3460,color:#eee,stroke:#e74c3c

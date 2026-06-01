@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://yvesdenis.github.io/sitemap.xml
+Disallow: /
